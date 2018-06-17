@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
  */
 @Slf4j
 public class CountExample {
-    private static int threadTotal = 200;
+    private static int threadTotal = 1;
     private static int clientTotal = 5000;
 
     private static long count = 0;
