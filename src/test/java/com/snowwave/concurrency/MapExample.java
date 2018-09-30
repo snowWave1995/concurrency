@@ -30,7 +30,7 @@ public class MapExample {
                     func(threadNum);
                     semaphore.release();
                 }catch (Exception e) {
-                    log.error("exception",e);
+                    log.error("exception  ",e);
                 }
             });
         }
