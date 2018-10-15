@@ -38,7 +38,7 @@ public class MapExample {
         log.info("count:{}",map.size());
     }
 
-    public static void func(int threadNum) {
+    private static void func(int threadNum) {
         map.put(threadNum,threadNum);
     }
 }
