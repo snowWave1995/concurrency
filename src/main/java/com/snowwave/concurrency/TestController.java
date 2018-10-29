@@ -1,7 +1,9 @@
 package com.snowwave.concurrency;
 
+import com.snowwave.concurrency.aopdemo.Mu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestController {
 
+    @Mu
     @RequestMapping("/test")
+    @ResponseBody
     public String test() {
+        System.out.println("3");
         return "test";
     }
 }

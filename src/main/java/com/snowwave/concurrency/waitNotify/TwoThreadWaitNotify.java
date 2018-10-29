@@ -1,7 +1,5 @@
 package com.snowwave.concurrency.waitNotify;
 
-import javax.swing.table.TableRowSorter;
-
 /**
  * Created by zhangfuqiang on 2018/10/15.
  * 两个线程交替打印奇数偶数
@@ -13,13 +11,10 @@ public class TwoThreadWaitNotify {
 
     public static void main(String[] args) {
         TwoThreadWaitNotify twoThread = new TwoThreadWaitNotify();
-
         Thread t1 = new Thread(new OuNum(twoThread));
-        t1.setName("A");
-
+        t1.setName("T1");
         Thread t2 = new Thread(new JiNum(twoThread));
-        t2.setName("B");
-
+        t2.setName("T2");
         t1.start();
         t2.start();
     }
@@ -42,8 +37,6 @@ public class TwoThreadWaitNotify {
                     if (number.flag) {
                         System.out.println(Thread.currentThread().getName() + "+-+偶数" + number.start);
                         number.start++;
-
-
                         number.flag = false;
                         TwoThreadWaitNotify.class.notify();
                     } else {
@@ -78,7 +71,6 @@ public class TwoThreadWaitNotify {
                     if (!number.flag) {
                         System.out.println(Thread.currentThread().getName() + "+-+奇数" + number.start);
                         number.start++;
-
                         number.flag = true;
                         TwoThreadWaitNotify.class.notify();
                     } else {
