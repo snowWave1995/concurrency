@@ -69,7 +69,7 @@ public class CountDownLatchDemo {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }finally {
-                        countDownLatch.countDown();
+                        countDownLatch.countDown();//原子操作，同时只能有一个线程操作计数器
                     }
 
         });
@@ -78,8 +78,8 @@ public class CountDownLatchDemo {
         System.out.println("wait all child thread over");
 
         try {
-            countDownLatch.await(2, TimeUnit.SECONDS);
-            System.out.println("all child thread over");
+            countDownLatch.await(2, TimeUnit.SECONDS);//调用await()会一直阻塞，直到countDown计数器为0 （大门一直关闭，直到计数器为0打开），并发继续执行
+            System.out.println("all child thread over");      //调用await(2, TimeUnit.SECONDS) ,超过这个时间，（大门打开）线程不阻塞，并发继续执行
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

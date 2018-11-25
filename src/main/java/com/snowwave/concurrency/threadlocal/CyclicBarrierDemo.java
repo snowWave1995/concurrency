@@ -8,7 +8,9 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
-        final CyclicBarrier  c = new CyclicBarrier(3);
+        final CyclicBarrier  c = new CyclicBarrier(3,()->{
+            System.out.println("all thread return");
+        });
 
         new Thread(() -> {
             try {
@@ -17,7 +19,7 @@ public class CyclicBarrierDemo {
                 System.out.println("子线程" + Thread.currentThread().getName() + c.isBroken());
                 System.out.println("子线程" + Thread.currentThread().getName() + c.getNumberWaiting());
                 System.out.println("子线程" + Thread.currentThread().getName() + "执行完毕");
-                c.await();
+                c.await(); //await()中同样可以传入等待时间
             }catch (Exception e) {
                 e.printStackTrace();
             }
