@@ -20,6 +20,7 @@ public class CyclicBarrierDemo {
                 System.out.println("子线程" + Thread.currentThread().getName() + c.getNumberWaiting());
                 System.out.println("子线程" + Thread.currentThread().getName() + "执行完毕");
                 c.await(); //await()中同样可以传入等待时间
+                System.out.println("子线程" + Thread.currentThread().getName() + "被阻塞后继续执行么");
             }catch (Exception e) {
                 e.printStackTrace();
             }
@@ -33,6 +34,7 @@ public class CyclicBarrierDemo {
                 System.out.println("子线程" + Thread.currentThread().getName() + c.getNumberWaiting());
                 System.out.println("子线程" + Thread.currentThread().getName() + "执行完毕");
                 c.await();
+                System.out.println("子线程" + Thread.currentThread().getName() + "被阻塞后继续执行么");
             }catch (Exception e) {
                 e.printStackTrace();
             }

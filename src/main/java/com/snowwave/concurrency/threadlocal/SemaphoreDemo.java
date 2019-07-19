@@ -2,13 +2,11 @@ package com.snowwave.concurrency.threadlocal;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 /**
  * Created by zhangfuqiang on 2018/11/25.
- * 每一秒只能有3个线程执行
+ * 每一秒只能有3个线程执行 所以可以做限流
  */
 @Slf4j
 public class SemaphoreDemo {
@@ -17,6 +15,7 @@ public class SemaphoreDemo {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
+        //只能有3个线程访问
         final Semaphore semaphore = new Semaphore(3);//并发数为3
 
         for (int i = 0; i < threadCount; i++) {
@@ -32,6 +31,9 @@ public class SemaphoreDemo {
             });
         }
         executorService.shutdown();
+
+
+
     }
 
     private static void test(int threadNum) throws Exception {

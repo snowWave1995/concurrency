@@ -58,6 +58,7 @@ public class CountDownLatchDemo {
                         e.printStackTrace();
                     }finally {
                         countDownLatch.countDown();
+                        System.out.println("子线1继续执行");
                     }
 
         });
@@ -70,6 +71,7 @@ public class CountDownLatchDemo {
                         e.printStackTrace();
                     }finally {
                         countDownLatch.countDown();//原子操作，同时只能有一个线程操作计数器
+                        System.out.println("子线2继续执行");
                     }
 
         });
